@@ -20,30 +20,36 @@ class Instructor extends Person {
     this.catchPhrase = element.catchPhrase;
   }
 
-  listSubjects() {}
+  demo(subject) {
+    console.log(`Today we are learning about ${subject}`);
+  }
 
-  PRAssignment() {}
-
-  sprintChallenge() {}
+  grade(student, subject) {
+    console.log(`${student.name} receives a perfect score on ${subject}`);
+  }
 }
 
 class Student extends Person {
   constructor(element) {
     super(element);
-    this.name = element.name;
-    this.age = element.age;
-    this.location = element.location;
-    this.gender = element.gender;
     this.previousBackground = element.previousBackground;
     this.className = element.className;
     this.favSubjects = element.favSubjects;
   }
 
-  listsSubjects() {}
+  listsSubjects() {
+    this.favSubjects.forEach(element => {
+      console.log(element);
+    });
+  }
 
-  PRAssignment() {}
+  PRAssignment(subject) {
+    console.log(`${student.name} has submitted a PR for ${subject}`);
+  }
 
-  sprintChallenge() {}
+  sprintChallenge(subject) {
+    console.log(`${student.name} has begun sprint challenge on ${subject}`);
+  }
 }
 
 class ProjectManager extends Instructor {
@@ -53,22 +59,26 @@ class ProjectManager extends Instructor {
     this.favInstructor = element.favInstructor;
   }
 
-  standUp() {}
+  standUp(channel) {
+    console.log(`${name} announces to ${channel}, @channel standby times!`);
+  }
 
-  debugsCode() {}
+  debugsCode(subject) {
+    console.log(`${name} debugs ${student.name}'s code on ${subject}`);
+  }
 }
 
-const Mike = new Instructor({
+const mike = new Instructor({
   name: 'Mike',
   location: 'CodeCity',
   age: 235,
   gender: 'male',
-  specialty: 'Front-end',
+  specialty: 'React',
   favLanguage: 'Python',
   catchPhrase: `City Of Codes`,
 });
 
-const Steve = new ProjectManager({
+const steve = new ProjectManager({
   name: 'Steve',
   location: 'Program Town',
   age: 175,
@@ -77,3 +87,21 @@ const Steve = new ProjectManager({
   favLanguage: 'Javascript',
   favInstructor: `Tom`,
 });
+
+const amber = new Student({
+  name: 'Amber',
+  location: 'React Street',
+  age: 25,
+  gender: 'female',
+  previousBackground: 'Electrician',
+  className: 'Web-19',
+  favSubject: ['HTML', 'CSS', 'Javascript'],
+});
+mike.speak();
+mike.demo('Javascript');
+mike.grade('Amber', 'HTML');
+amber.listsSubjects();
+amber.sprintChallenge('React');
+amber.PRAssignment('Semantic HTML');
+steve.standUp('Steve', 'Slack');
+steve.debugsCode('#CSS');
