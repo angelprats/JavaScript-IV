@@ -97,11 +97,14 @@ const amber = new Student({
   className: 'Web-19',
   favSubject: ['HTML', 'CSS', 'Javascript'],
 });
+
 mike.speak();
 mike.demo('Javascript');
-mike.grade('Amber', 'HTML');
+mike.grade(amber, 'HTML');
+
 amber.listsSubjects();
 amber.sprintChallenge('React');
 amber.PRAssignment('Semantic HTML');
+
 steve.standUp('Steve', 'Slack');
 steve.debugsCode('#CSS');
